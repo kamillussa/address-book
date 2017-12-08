@@ -65,7 +65,8 @@ body {
  */
 
 .masthead {
-  margin-bottom: 2rem;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .masthead-brand {
@@ -166,3 +167,12 @@ body {
 label {
   padding-top: 10px;
 }
+
+.contact {
+  padding-top: 0px;
+  margin-top: 0px;
+  border-width: 800px;
+  background-color: #969896;
+  color: #ffffdd;
+}
+

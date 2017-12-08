@@ -21,7 +21,7 @@ class AddressProfileController extends Controller
         $contacts = $repository->findAllContacts();
         dump($contacts);
 
-        return $this->render('AppBundle::index.html.twig', array());
+        return $this->render('AppBundle::index.html.twig', array('contacts' => $contacts));
     }
 
 

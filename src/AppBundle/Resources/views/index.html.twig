@@ -1,7 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+    {% for contact in contacts %}
+    <div class="col-md-10 offset-md-1 row-block">
+        <ul id="sortable">
+            <li>
+                <div class="media">
+                    <div class="media-left align-self-center">
+                        <img class="rounded-circle" src="149071.png">
+                    </div>
+                    <div class="media-body">
+                        <h4>{{ contact.name }} {{ contact.surname }}</h4>
+                        <p>{{ contact.phoneNumber }}</p>
+                    </div>
+                    <div class="media-right align-self-center">
+                        <a href="#" class="btn btn-light">Show details</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
 {% endblock %}
 
 {% block stylesheets %}
