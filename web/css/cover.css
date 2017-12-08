@@ -33,6 +33,7 @@ body {
   color: #ffffdd;
   text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
+    overflow: hidden;
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -111,7 +112,10 @@ body {
  */
 
 .cover {
-  padding: 0 1.5rem;
+    padding: 0 1.5rem;
+    height: 550px;
+    overflow: auto;
+
 }
 .cover .btn-lg {
   padding: .75rem 1.25rem;
