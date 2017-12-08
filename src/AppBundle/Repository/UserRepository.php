@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllContacts()
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT u.name, u.surname, p.phoneNumber FROM AppBundle:User u JOIN u.phone AS p WHERE u.id>0");
+        $contacts = $query->getResult();
+        return $contacts;
+    }
 }
