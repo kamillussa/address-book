@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Email;
 use AppBundle\Entity\Phone;
+use AppBundle\Entity\Address;
 
 class AddressProfileController extends Controller
 {
@@ -30,7 +31,7 @@ class AddressProfileController extends Controller
      */
     public function newAction()
     {
-        return $this->render('AppBundle:AddressProfile:new.html.twig', array());
+        return $this->render('AppBundle:New:new_contact.html.twig', array());
     }
 
     /**
@@ -66,9 +67,11 @@ class AddressProfileController extends Controller
      */
     public function modifyAction($id)
     {
-        return $this->render('AppBundle:AddressProfile:modify.html.twig', array(
-            // ...
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('AppBundle:User');
+        $contact = $repository->findContactById($id);
+        dump($contact);
+        return $this->render('AppBundle:AddressProfile:modify.html.twig', array('contact' => $contact));
     }
 
     /**
@@ -76,19 +79,65 @@ class AddressProfileController extends Controller
      */
     public function deleteAction($id)
     {
-        return $this->render('AppBundle:AddressProfile:delete.html.twig', array(
-            // ...
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('AppBundle:User');
+        $user = $repository->find($id);
+        $em->remove($user);
+        $em->flush();
+
+        return $this->redirect('/');
     }
 
     /**
-     * @Route("/showAll")
+     * @Route("/showDetails/{id}")
      */
-    public function showAllAction()
+    public function showDetailsAction($id)
     {
-        return $this->render('AppBundle:AddressProfile:show_all.html.twig', array(
-            // ...
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('AppBundle:User');
+        $contact = $repository->findContactById($id);
+        dump($contact);
+        return $this->render('AppBundle:AddressProfile:show_details.html.twig', array('contact' => $contact));
+    }
+
+    /**
+     * @Route("/newHomeAddress")
+     */
+    public function newHomeAddressAction()
+    {
+        return $this->render('AppBundle:New:new_home_address.html.twig', array());
+    }
+
+    /**
+     * @Route("/createHomeAddress")
+     */
+    public function createHomeAddressAction(Request $request)
+    {
+        $data = $request->request->all();
+        $street = $data['street'];
+        $homeNumber = $data['homeNumber'];
+        $flatNumber = $data['flatNumber'];
+        $city = $data['city'];
+
+        $address = new Address();
+        $address->setStreet($street);
+        $address->setHomeNumber($homeNumber);
+        $address->setFlatNumber($flatNumber);
+        $address->setCity($city);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($address);
+        $em->flush();
+
+        return	$this->redirect("/");
+    }
+
+    /**
+     * @Route("/find")
+     */
+    public function findAction()
+    {
+        return $this->render('AppBundle::find.html.twig', array());
     }
 
 }

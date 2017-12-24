@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container" id="main">
+        <form action="/createHomeAddress" method="POST">
+            <label>Address:</label><br>
+            <input type="text" name="street" value="" placeholder="street">
+            <input type="number" name="homeNumber" value="" placeholder="home number">
+            <input type="number" name="flatNumber" value="" placeholder="flat number">
+            <input type="text" name="city" value="" placeholder="city">
+            <input class="btn btn-light" type="submit" value="Save">
+        </form>
+    </div>
+{% endblock %}

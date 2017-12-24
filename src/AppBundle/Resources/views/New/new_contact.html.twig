@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
+{% block li %}
+    <li class="nav-item">
+        <a class="nav-link" href="/newHomeAddress">New home-address</a>
+    </li>
+{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container" id="main">
         <form action="/createContact" method="POST">
             <label>Name:</label><br>
             <input type="text" name="name" value=""><br>
@@ -12,8 +17,8 @@
             <label>Email:</label><br>
             <input type="email" name="email" value=""><br>
             <label>Description:</label><br>
-            <textarea name="description" rows="5" cols="20"></textarea><br>
-            <input class="btn btn-dark" type="submit" value="Save">
+            <textarea name="description" rows="2" cols="20"></textarea><br><br>
+            <input class="btn btn-light" type="submit" value="Save">
         </form>
     </div>
 {% endblock %}

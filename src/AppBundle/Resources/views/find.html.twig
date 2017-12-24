@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="input-group">
+        <div class="input-group-btn search-panel">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span id="search_concept">Type</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="?name"><i class="fa fa-angle-double-right"></i> Name</a></li>
+                <li><a href="?email"><i class="fa fa-angle-double-right"></i> Email</a></li>
+                <li><a href="?phone"><i class="fa fa-angle-double-right"></i> Phone</a></li>
+            </ul>
+        </div>
+        <input type="hidden" name="search_param" value="name" id="search_param">
+        <input type="text" class="form-control" name="q" placeholder="Search.." id="search_key" value="">
+        <button class="btn btn-light" type="submit">  Search  </button>
+    </div>
+{% endblock %}

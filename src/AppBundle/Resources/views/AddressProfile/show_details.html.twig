@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="main">
+        <div class="container-fluid well span6">
+            <div class="row-fluid">
+                <div class="span2">
+                    <img class="rounded-circle" src="/149071.png">
+                </div>
+
+                <div class="span8">
+                    <h3>{{ contact[0].name }} {{ contact[0].surname }}</h3>
+                    <h6>Email: {{ contact[0].email.address }}</h6>
+                    <h6>Phone: {{ contact[0].phone.phoneNumber }}</h6>
+                    {% if contact[0].address is not null %}
+                        <h6>Address: {{ contact[0].address.street }} {{ contact[0].address.homeNumber }}
+                            , {{ contact[0].address.city }}
+                        </h6>
+                    {% endif %}
+                    <h6>{{ contact[0].description }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

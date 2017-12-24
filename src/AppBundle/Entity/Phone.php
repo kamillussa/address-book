@@ -26,14 +26,14 @@ class Phone
      *
      * @ORM\Column(name="phone_number", type="integer", unique=true)
      */
-    private $phoneNumber;
+    protected $phoneNumber;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=10, nullable=true)
      */
-    private $type;
+    protected $type;
 
     /**
      * Phone constructor.
